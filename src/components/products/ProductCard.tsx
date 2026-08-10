@@ -1,13 +1,19 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { Heart } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
 import { StarRating } from '@/components/shared/StarRating';
-import { formatCurrency } from '@/lib/utils';
+import { formatCurrency, cn } from '@/lib/utils';
+import { useWishlist } from '@/context/WishlistContext';
 import type { Product } from '@/types';
 
 export function ProductCard({ product }: { product: Product }) {
   const hasDiscount = product.compareAtPrice && Number(product.compareAtPrice) > Number(product.price);
+  const { isWishlisted, toggleWishlist } = useWishlist();
+  const wishlisted = isWishlisted(product.id);
 
   return (
     <Card className="flex h-full flex-col overflow-hidden p-0 transition-shadow hover:shadow-md">
@@ -24,6 +30,18 @@ export function ProductCard({ product }: { product: Product }) {
             Sale
           </Badge>
         )}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            toggleWishlist(product);
+          }}
+          aria-label={wishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+          aria-pressed={wishlisted}
+          className="absolute right-3 top-3 flex size-8 items-center justify-center rounded-full bg-background/90 shadow-sm"
+        >
+          <Heart className={cn('size-4', wishlisted ? 'fill-red-500 text-red-500' : 'text-slate-500')} />
+        </button>
       </Link>
       <div className="flex flex-1 flex-col gap-2 p-4">
         <Badge tone="neutral" className="w-fit">

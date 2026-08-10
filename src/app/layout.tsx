@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { AuthProvider } from "@/context/AuthContext";
 import { CartProvider } from "@/context/CartContext";
+import { WishlistProvider } from "@/context/WishlistContext";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
@@ -38,10 +39,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ThemeProvider>
           <AuthProvider>
             <CartProvider>
-              <Navbar />
-              <main className="flex-1">{children}</main>
-              <Footer />
-              <Toaster richColors position="top-right" />
+              <WishlistProvider>
+                <Navbar />
+                <main className="flex-1">{children}</main>
+                <Footer />
+                <Toaster richColors position="top-right" />
+              </WishlistProvider>
             </CartProvider>
           </AuthProvider>
         </ThemeProvider>
