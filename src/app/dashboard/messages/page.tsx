@@ -26,6 +26,9 @@ export default function MessagesPage() {
         setMessages(data.items);
         setTotalPages(data.meta.totalPages);
       })
+      .catch(() => {
+        // Non-admins get a 403 here and are redirected by RequireRole; nothing to show.
+      })
       .finally(() => setIsLoading(false));
   }
 

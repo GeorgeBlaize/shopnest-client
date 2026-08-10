@@ -24,6 +24,9 @@ export default function AnalyticsPage() {
         setStatusData(statusRes.items);
         setTopProducts(topRes.items);
       })
+      .catch(() => {
+        // Non-staff users get a 403 here and are redirected by RequireRole; nothing to show.
+      })
       .finally(() => setIsLoading(false));
   }, []);
 

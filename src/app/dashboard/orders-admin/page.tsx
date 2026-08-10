@@ -38,6 +38,9 @@ export default function ManageOrdersPage() {
         setOrders(data.items);
         setTotalPages(data.meta.totalPages);
       })
+      .catch(() => {
+        // Non-staff users get a 403 here and are redirected by RequireRole; nothing to show.
+      })
       .finally(() => setIsLoading(false));
   }, [statusFilter, page]);
 
