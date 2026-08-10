@@ -37,7 +37,7 @@ export default function PrivacyPage() {
           <p className="mt-2">
             We share order details with the shipping carrier fulfilling your delivery, and nothing more. Any
             third-party service we use to operate ShopNest is contractually bound to protect your data and use it
-            only for the purpose we've engaged them for.
+            only for the purpose we&apos;ve engaged them for.
           </p>
         </section>
         <section>

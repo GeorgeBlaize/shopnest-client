@@ -10,7 +10,7 @@ export function FeaturedCategories({ categories }: { categories: Category[] }) {
       <div className="mb-8 flex items-end justify-between">
         <div>
           <h2 className="text-2xl font-bold">Shop by Category</h2>
-          <p className="mt-1 text-slate-500">Find exactly what you're looking for</p>
+          <p className="mt-1 text-slate-500">Find exactly what you&apos;re looking for</p>
         </div>
         <Link href="/products" className="text-sm font-medium text-brand hover:underline">
           View all

@@ -15,7 +15,7 @@ export default function WishlistPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Wishlist</h1>
-        <p className="text-sm text-slate-500">Products you've saved for later</p>
+        <p className="text-sm text-slate-500">Products you&apos;ve saved for later</p>
       </div>
 
       {items.length === 0 ? (

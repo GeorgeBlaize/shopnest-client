@@ -34,8 +34,8 @@ export default function AboutPage() {
           account creation just to browse, and a shipping fee that disappears entirely once your cart crosses $75.
         </p>
         <p>
-          We're still a small company, which means when you write in with a problem, a real person reads it and can
-          actually do something about it. That's the kind of company we want to stay as we grow.
+          We&apos;re still a small company, which means when you write in with a problem, a real person reads it and can
+          actually do something about it. That&apos;s the kind of company we want to stay as we grow.
         </p>
       </div>
 

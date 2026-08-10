@@ -10,7 +10,7 @@ export default function ContactPage() {
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
       <div className="text-center">
         <h1 className="text-3xl font-bold">Get in Touch</h1>
-        <p className="mt-2 text-slate-500">Questions about an order, a product, or a partnership? We'd love to hear from you.</p>
+        <p className="mt-2 text-slate-500">Questions about an order, a product, or a partnership? We&apos;d love to hear from you.</p>
       </div>
 
       <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_320px]">
