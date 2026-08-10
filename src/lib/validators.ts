@@ -47,7 +47,7 @@ export const addressSchema = z.object({
 export type AddressInput = z.infer<typeof addressSchema>;
 
 export const reviewSchema = z.object({
-  rating: z.coerce.number().min(1, 'Select a rating').max(5),
+  rating: z.number().min(1, 'Select a rating').max(5),
   comment: z.string().trim().min(5, 'Comment must be at least 5 characters').max(500),
 });
 export type ReviewInput = z.infer<typeof reviewSchema>;
