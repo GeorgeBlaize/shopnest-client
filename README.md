@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ShopNest — Client
 
-## Getting Started
+Next.js (App Router, TypeScript, Tailwind CSS) frontend for ShopNest, a full-stack e-commerce platform. Talks to the [shopnest-server](https://github.com/GeorgeBlaize/shopnest-server) Express API.
 
-First, run the development server:
+## Features
+
+- Home page with 8+ marketing sections, product listing with search/filter/sort/pagination, product detail pages, cart + mock (COD) checkout
+- Email/password auth plus Google sign-in (Firebase), with one-click demo login
+- Role-based dashboard (User / Admin / Manager) with real charts, data tables, and CRUD for products/categories/orders/users
+- Light & dark mode, fully responsive
+
+## Getting started
 
 ```bash
+npm install
+cp .env.local.example .env.local   # fill in NEXT_PUBLIC_API_URL + Firebase Web SDK keys
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App runs at [http://localhost:3000](http://localhost:3000). Requires the [shopnest-server](https://github.com/GeorgeBlaize/shopnest-server) API running (default `http://localhost:5000`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+See [`.env.local.example`](./.env.local.example) for the full list:
 
-## Learn More
+- `NEXT_PUBLIC_API_URL` — base URL of the backend API
+- `NEXT_PUBLIC_FIREBASE_*` — Firebase Web SDK config, used for Google sign-in
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm run dev` — start dev server
+- `npm run build` — production build
+- `npm run start` — run a production build
+- `npm run lint` — lint
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Demo credentials
 
-## Deploy on Vercel
+| Role    | Email                 | Password    |
+|---------|------------------------|-------------|
+| Admin   | admin@shopnest.com    | Admin@123   |
+| Manager | manager@shopnest.com  | Manager@123 |
+| User    | user@shopnest.com     | User@123    |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The login page also has one-click "Demo login" buttons that auto-fill these.
