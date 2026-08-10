@@ -52,13 +52,26 @@ export const reviewSchema = z.object({
 });
 export type ReviewInput = z.infer<typeof reviewSchema>;
 
+const numericString = (message: string) =>
+  z
+    .string()
+    .trim()
+    .min(1, message)
+    .refine((val) => !Number.isNaN(Number(val)), { message: 'Must be a number' });
+
 export const productSchema = z.object({
   title: z.string().trim().min(3, 'Title must be at least 3 characters'),
   shortDesc: z.string().trim().min(10, 'Short description must be at least 10 characters').max(200),
   description: z.string().trim().min(20, 'Description must be at least 20 characters'),
-  price: z.coerce.number().positive('Price must be greater than 0'),
-  compareAtPrice: z.coerce.number().positive().optional().or(z.literal('')),
-  stock: z.coerce.number().int().nonnegative('Stock cannot be negative'),
+  price: numericString('Price is required').refine((val) => Number(val) > 0, { message: 'Price must be greater than 0' }),
+  compareAtPrice: z
+    .string()
+    .trim()
+    .optional()
+    .refine((val) => !val || (!Number.isNaN(Number(val)) && Number(val) > 0), { message: 'Must be a positive number' }),
+  stock: numericString('Stock is required').refine((val) => Number.isInteger(Number(val)) && Number(val) >= 0, {
+    message: 'Stock must be a whole number, 0 or more',
+  }),
   categoryId: z.string().min(1, 'Select a category'),
   images: z.string().trim().min(1, 'Provide at least one image URL'),
   isFeatured: z.boolean().optional(),
